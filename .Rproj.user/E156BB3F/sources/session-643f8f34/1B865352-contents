@@ -1,0 +1,16 @@
+library(tidyverse)
+library(readxl)
+source(file='r/functions.R')
+
+data <- readRDS("input/clean_data.rds")
+
+data %>%
+  na.omit() %>%
+  filter(species == "Adelie") %>%
+  group_by(island) %>%
+  summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+  print()
+
+penguins_clean <- na.omit(data)
+
+create_scatterplot('Torgerson','Adelie')

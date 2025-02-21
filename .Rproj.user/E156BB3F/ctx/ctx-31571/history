@@ -1,0 +1,477 @@
+data <- read.csv("https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/data_2.csv")
+write.csv(data, "data.csv", row.names = FALSE)
+data <- read.csv("input/data.csv")
+library(tidyverse)
+data <- read.csv("input/data.csv")
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+geom_point(size = 3) +
+labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+theme_minimal()
+getwd()
+data <- read_excel("input/data.csv")
+library(readxl)
+data <- read_excel("input/data.csv")
+data <- read_excel("input/data.xlsx")
+library(tidyverse)
+library(readxl)
+data <- read_excel("input/data.xlsx")
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+geom_point(size = 3) +
+labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+theme_minimal()
+library(tidyverse)
+library(readxl)
+data <- read_excel("input/data.xlsx", na='')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+geom_point(size = 3) +
+labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+theme_minimal()
+library(tidyverse)
+library(readxl)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+geom_point(size = 3) +
+labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+theme_minimal()
+multiply234 <- function(num) {
+return(num*234)
+}
+multiply234(311)
+8%%2
+8%%3
+8%%3 ==0
+billscat <- function(data=data,
+blen=bill_length_mm,
+bdep=bill_depth_mm) {
+ggplot(data,aes(x=blen, y=bdep)) +
+labs(title = "Penguin Bill Dimensions",
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)")
+}
+billscat <- function(island, species) {
+data %>%
+filter(species==species, island==island) %>%
+ggplot(penguins_clean ,aes(x=bill_length_mm, y=bill_depth_mm)) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)")
+}
+View(data)
+billscat(Torgerson,Adelie)
+rlang::last_trace()
+library(tidyverse)
+library(readxl)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+# ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+#   geom_point(size = 3) +
+#   labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+#   scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+#   theme_minimal()
+# SCATTERPLOT FUNCTION
+billscat <- function(island, species) {
+data %>%
+filter(species==species, island==island) %>%
+ggplot(penguins_clean,aes(x=bill_length_mm, y=bill_depth_mm)) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)")
+}
+billscat(Torgerson,Adelie)
+billscat('Torgerson','Adelie')
+library(tidyverse)
+library(readxl)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+# ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+#   geom_point(size = 3) +
+#   labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+#   scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+#   theme_minimal()
+# SCATTERPLOT FUNCTION
+billscat <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)")
+}
+billscat('Torgerson','Adelie')
+library(glue)
+library(tidyverse)
+library(readxl)
+library(glue)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+# ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+#   geom_point(size = 3) +
+#   labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+#   scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+#   theme_minimal()
+# SCATTERPLOT FUNCTION
+billscat <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)")
+}
+billscat('Torgerson','Adelie')
+library(tols)
+library(tools)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+# ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+#   geom_point(size = 3) +
+#   labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+#   scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+#   theme_minimal()
+# SCATTERPLOT FUNCTION
+billscat <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)")
+}
+billscat('Torgerson','Adelie')
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+# ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+#   geom_point(size = 3) +
+#   labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+#   scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+#   theme_minimal()
+# SCATTERPLOT FUNCTION
+billscat <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+geom_point(size = 3) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)")
+}
+billscat('Torgerson','Adelie')
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+# ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+#   geom_point(size = 3) +
+#   labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+#   scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+#   theme_minimal()
+# SCATTERPLOT FUNCTION
+billscat <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+geom_point(size = 3) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)") +
+theme_minimal()
+}
+billscat('Torgerson','Adelie')
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+data <- read_excel("input/data.xlsx", na='-')
+# ----- TIDY VERSION -----
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+# ggplot(penguins_clean, aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
+#   geom_point(size = 3) +
+#   labs(title = "Penguin Bill Dimensions", x = "Bill Length (mm)", y = "Bill Depth (mm)") +
+#   scale_color_manual(values = c("Adelie" = "red", "Chinstrap" = "green", "Gentoo" = "blue")) +
+#   theme_minimal()
+# SCATTERPLOT FUNCTION
+create_scatterplot <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+geom_point(size = 3) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)") +
+theme_minimal()
+}
+create_scatterplot('Torgerson','Adelie')
+create_scatterplot <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+geom_point(size = 3) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)") +
+theme_minimal()
+}
+source(functions.R)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(functions.R)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(functions.R)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(r/functions.R)
+source(functions.R)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(functions.R)
+create_scatterplot <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+geom_point(size = 3) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)") +
+theme_minimal()
+}
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(functions.R)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='r/functions.R')
+data <- read_excel("input/data.xlsx", na='-')
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+create_scatterplot('Torgerson','Adelie')
+create_scatterplot <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+geom_point(size = 3) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)") +
+scale_x_continuous(breaks = seq(30, 60, by = 5)) +  # Adjust x-axis ticks
+scale_y_continuous(breaks = seq(10, 25, by = 2)) +  # Adjust y-axis ticks
+theme_minimal()
+}
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='r/functions.R')
+data <- read_excel("input/data.xlsx", na='-')
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+create_scatterplot('Torgerson','Adelie')
+View(data)
+View(data)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='r/functions.R')
+data <- read_excel("input/data.xlsx", na='')
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+create_scatterplot('Torgerson','Adelie')
+View(data)
+View(penguins_clean)
+View(data)
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='r/functions.R')
+data <- read_excel("input/data.xlsx", na='', col_types = c("guess", "guess", "numeric", "numeric", "guess", "guess", "guess"))
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='r/functions.R')
+data <- read_excel("input/data.xlsx", na='', col_types = c("guess", "guess", "numeric", "numeric", "guess", "guess", "guess", "guess"))
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+create_scatterplot('Torgerson','Adelie')
+library(tidyverse)
+library(readxl)
+data <- read_excel("input/data.xlsx", na='', col_types = c("guess", "guess", "numeric", "numeric", "guess", "guess", "guess", "guess"))
+View(data)
+library(tidyverse)
+library(readxl)
+data <- read_excel("input/data.xlsx", na='', col_types = c("guess", "guess", "numeric", "numeric", "guess", "guess", "guess", "guess"))
+# Remove rows 23 and 48
+clean_data <- data[-c(23, 48), ]
+# Save the cleaned data as an RDS file
+saveRDS(clean_data, "input/clean_data.rds")
+data <- readRDS("input/clean_data.rds")
+library(tidyverse)
+library(readxl)
+library(tools)
+source(file='r/functions.R')
+data <- readRDS("input/clean_data.rds")
+data %>%
+na.omit() %>%
+filter(species == "Adelie") %>%
+group_by(island) %>%
+summarise(mean_bill_length = round(mean(bill_length_mm), 2)) %>%
+print()
+penguins_clean <- na.omit(data)
+create_scatterplot('Torgerson','Adelie')
+library(glue)
+create_scatterplot <- function(island, species) {
+penguins_clean %>%
+filter(species==species, island==island) %>%
+ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) +
+geom_point(size = 3) +
+labs(title = glue("{toTitleCase(species)} Bill Dimensions from {toTitleCase(island)}"),
+x = "Bill Length (mm)",
+y = "Bill Depth (mm)") +
+scale_x_continuous(breaks = seq(30, 60, by = 5)) +  # Adjust x-axis ticks
+scale_y_continuous(breaks = seq(10, 25, by = 2)) +  # Adjust y-axis ticks
+theme_minimal()
+}
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='r/functions.R')
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='functions.R')
+data <- readRDS("input/clean_data.rds")
+library(tidyverse)
+library(readxl)
+library(glue)
+library(tools)
+source(file='r/functions.R')

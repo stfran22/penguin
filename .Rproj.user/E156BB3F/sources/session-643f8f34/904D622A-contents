@@ -1,0 +1,76 @@
+---
+title: "Penguin Analysis"
+author: 
+  name: 'Stephen Francisco'
+  email: stf45@drexel.edu
+  affiliation: "Drexel University's Urban Health Collaborative"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: true
+    code-summary: "Show the code"
+    number-sections: true
+    toc-location: left
+    toc-title: " "
+    css: style.css
+editor: source
+fig-cap-location: margin
+---
+
+Penguin data comes from [here](https://allisonhorst.github.io/palmerpenguins/).
+
+::: callout-note
+Note!
+:::
+
+![Bill measurement explanation](asset/culmen_depth.png){width="300"}
+
+## Loading Packages and Data
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+library(readxl)
+library(ggplot2)
+library(patchwork)
+library(DT)
+library(knitr)
+library(plotly)
+source(file='functions.R')
+theme_set(theme_drexel())
+data <- readRDS("../input/clean_data.rds")
+```
+
+## Summary
+
+```{r}
+summary(data)
+```
+
+```{r}
+datatable(data)
+```
+
+```{r}
+#| layout-ncol: 2
+
+abl <- data %>%
+ group_by(species) %>% 
+  summarise(average_bill_length = mean(bill_length_mm, na.rm = TRUE)) 
+kable(abl)
+
+abd <- data %>%
+ group_by(species) %>% 
+  summarise(average_bill_depth = mean(bill_depth_mm, na.rm = TRUE))
+kable(abd)
+```
+
+## Scatterplot
+
+```{r, warning=FALSE, fig.height=3, fig.width=9, fig.cap='There is a positive correlation between bill length and depth when split by species.'}
+p1 <- create_scatterplot(data, 'Torgerson','Adelie')
+p2 <- create_scatterplot(data, 'Torgerson','Chinstrap')
+p3 <- create_scatterplot(data, 'Torgerson','Gentoo')
+ggplotly(p1)
+p2 + p3
+```
